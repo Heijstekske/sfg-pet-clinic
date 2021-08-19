@@ -1,4 +1,4 @@
-package guru.springframework.sfgpetclinic.model;
+package sfgpetclinic.model;
 
 /**
  * @author NH 2021-08-19
