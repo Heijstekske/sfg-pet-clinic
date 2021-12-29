@@ -9,16 +9,16 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "specialties")
-public class Specialty extends BaseEntity{
+public class Specialty extends BaseEntity {
 
-    @Column(name = "specialty_description")
-    private String specialtyDescription;
+   @Column(name = "specialty_description")
+   private String specialtyDescription;
 
-    public String getSpecialtyDescription() {
-        return specialtyDescription;
-    }
+   public String getSpecialtyDescription() {
+      return specialtyDescription;
+   }
 
-    public void setSpecialtyDescription(String specialtyDescription) {
-        this.specialtyDescription = specialtyDescription;
-    }
+   public void setSpecialtyDescription(String specialtyDescription) {
+      this.specialtyDescription = specialtyDescription;
+   }
 }

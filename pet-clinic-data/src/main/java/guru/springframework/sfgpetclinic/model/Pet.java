@@ -2,6 +2,8 @@ package guru.springframework.sfgpetclinic.model;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * @author NH 2021-08-19
@@ -11,49 +13,60 @@ import java.time.LocalDate;
 @Table(name = "pets")
 public class Pet extends BaseEntity {
 
-    @Column(name = "pet_name")
-    private String petName;
+   @Column(name = "pet_name")
+   private String petName;
 
-    @ManyToOne
-    @JoinColumn(name = "type_id")
-    private PetType petType;
+   @ManyToOne
+   @JoinColumn(name = "type_id")
+   private PetType petType;
 
-    @ManyToOne
-    @JoinColumn(name = "owner_id")
-    private Owner owner;
+   @ManyToOne
+   @JoinColumn(name = "owner_id")
+   private Owner owner;
 
-    @Column(name = "birth_date")
-    private LocalDate birthday;
+   @Column(name = "birth_date")
+   private LocalDate birthday;
 
-    public String getPetName() {
-        return petName;
-    }
+   @OneToMany(cascade = CascadeType.ALL, mappedBy = "pet")
+   private Set<Visit> visits = new HashSet<>();
 
-    public void setPetName(String petName) {
-        this.petName = petName;
-    }
+   public Set<Visit> getVisits() {
+      return visits;
+   }
 
-    public PetType getPetType() {
-        return petType;
-    }
+   public void setVisits(Set<Visit> visits) {
+      this.visits = visits;
+   }
 
-    public void setPetType(PetType petType) {
-        this.petType = petType;
-    }
+   public String getPetName() {
+      return petName;
+   }
 
-    public Owner getOwner() {
-        return owner;
-    }
+   public void setPetName(String petName) {
+      this.petName = petName;
+   }
 
-    public void setOwner(Owner owner) {
-        this.owner = owner;
-    }
+   public PetType getPetType() {
+      return petType;
+   }
 
-    public LocalDate getBirthday() {
-        return birthday;
-    }
+   public void setPetType(PetType petType) {
+      this.petType = petType;
+   }
 
-    public void setBirthday(LocalDate birthday) {
-        this.birthday = birthday;
-    }
+   public Owner getOwner() {
+      return owner;
+   }
+
+   public void setOwner(Owner owner) {
+      this.owner = owner;
+   }
+
+   public LocalDate getBirthday() {
+      return birthday;
+   }
+
+   public void setBirthday(LocalDate birthday) {
+      this.birthday = birthday;
+   }
 }
