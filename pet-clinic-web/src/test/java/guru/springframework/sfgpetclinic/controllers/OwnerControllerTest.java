@@ -61,6 +61,6 @@ class OwnerControllerTest {
             .andExpect(MockMvcResultMatchers.status().isOk())
             .andExpect(MockMvcResultMatchers.view().name("notImplemented"));
 
-      verifyZeroInteractions(ownerService);
+      verifyNoInteractions(ownerService);
    }
 }
